@@ -1,0 +1,100 @@
+\
+
+
+
+
+
+
+create table EMP1 ( EMPID int , EMPNAME varchar(20), EMPADD varchar(20), EMPSalary int);
+
+--------------------------------------------
+use sys;
+insert into EMP1 values(1,"Samita","Mumbai",200000);
+insert into EMP1 values(1,"yash","Banglore",100000);
+insert into EMP1 values(1,"Sumit","Hydrabad",300000);
+insert into EMP1 values(1,"Sujal","US",500000);
+select * from EMP1;
+
+-------------------
+
+/*maximum salary
+select * from EMP1 where EMPSalary=(select max(EMPSalary) from EMP1);
+
+----------------------------
+use sys;
+/* mimimum salary
+
+select * from EMP1 where EMPSalary=(select min(EMPSalary) from EMP1 );
+
+-------------------------------------------------
+/* second highest
+select * from EMP1 where EMPSalary=(select max(EMPSalary) from EMP1 where EMPSalary < (select max(EMPSalary) from EMP1));
+select * from EMP1 where EMPSalary=(select max(EMPSalary) from EMP1 where EMPSalary > (select max(EMPSalary) from EMP1));
+-----------------------------------------------
+/*names begin with Y
+select * from EMP1 where EMPNAME Like 'y%';
+
+-----------------------------------
+
+/*all values in one
+select * from EMP1 where empname in("yash", "sumit","sujal", "samita");
+
+------------------------------------------------------
+
+/* new table using existing table
+create table New As select * from EMP1;
+
+-----------------------------------------
+/*slsray between 100000 to 500000
+select * from EMP1 where EMpsalary between 100000 and 500000;
+------------------------------------
+delete from EMP1 where empname in("yash","sujal");
+select * from EMP1;
+-----------------------------------------
+
+/*Arrang records in Acesding and descending order
+select * from EMP1 order by EMPSalary ;
+-------------------------------------
+Decending
+select * from EMP1 order by EMPSalary DESC;
+
+----------------------
+/*retrive only unique record
+select distinct * from emp1;
+
+------------------------------
+
+/*Arrang records in Acesding and descending order
+select * from EMP1 order by EMPSalary ;
+Decending
+select * from EMP1 order by EMPSalary DESC;
+-----------------------------------------------------
+
+/*add column
+alter table EMP1 add EMPno int ;
+
+
+
+-------------------------------------
+/*add column
+alter table EMP1 add EMPno int ;
+------------------------------------
+
+/*count
+select count(EMPNAME) from  EMP1;
+-----------------------------------
+select count(EMPNAME) from  EMP1;
+select count(*) from EMP1;
+
+update  EMP1 set EMPADD='London' where empname = 'samita';
+---------------------------------------
+
+/* second highest salary
+select empsalary from EMP1 order by empsalary DESC LIMIT 1,1;
+
+-----------------------------------------
+duplicate count
+select  count (EMPID) from EMP1 group by EMPID having count (EMPID)>1;
+
+
+
